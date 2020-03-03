@@ -1,9 +1,12 @@
-## Speed Coding Tinder in 60 Minutes | React
+## Clef
 
-Video: https://www.youtube.com/watch?v=wLGM04oi_wE
 
-Speed coding challenge for my YouTube channel. I used the standard create-react-app to build this. Feel free to contribute!
+# Description
+A social networking app to help musicians connect with other musicians near them.
 
-Subscribe to my YouTube channel here: http://bit.ly/CognitiveSurge for more videos!
 
-![Preview](tinder-preview.png?raw=true)
+# Usage
+
+1. Select the client folder and open in the terminal of your code editor
+2. In the client terminal run `npm install`. This may take a while
+3. still in the client terminal, run `npm start`
