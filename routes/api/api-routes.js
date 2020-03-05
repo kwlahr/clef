@@ -51,7 +51,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/users/:id", function(req, res) {
-    db.User.findOne({
+    db.User.findAll({
       where: {
         instrument: req.params.instrument
       }
@@ -61,7 +61,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/users/:id", function(req, res) {
-    db.User.findOne({
+    db.User.findAll({
       where: {
         genre: req.params.genre
       }
@@ -71,7 +71,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/users/:id", function(req, res) {
-    db.User.findOne({
+    db.User.findAll({
       where: {
         skillLevel: req.params.skillLevel
       }
