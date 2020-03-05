@@ -1,24 +1,27 @@
-// Import the ORM to create functions that will interact with the database.
-var orm = require("../config/orm.js");
+// DROP DATABASE IF EXISTS users_db;
+// CREATE DATABASE users_db;
+// USE users_db;
+ 
+// CREATE TABLE users
+// (
+//     id int NOT NULL AUTO_INCREMENT,
+//     name VARCHAR(255) NOT NULL,
+//     age INT,
+//     skill_level INT,
+//     instrument VARCHAR(100),
+//     genre VARCHAR(100),
+//     PRIMARY KEY (id)
+// );
 
-var user = {
-  all: function(cb) {
-    orm.all("users", function(res) {
-      cb(res);
-    });
-  },
-  // The variables cols and vals are arrays.
-  create: function(cols, vals, cb) {
-    orm.create("users", cols, vals, function(res) {
-      cb(res);
-    });
-  },
-  update: function(objColVals, condition, cb) {
-    orm.update("users", objColVals, condition, function(res) {
-      cb(res);
-    });
-  }
+module.exports = function(sequelize, DataTypes) {
+  var User = sequelize.define("User", {
+    first_name: DataTypes.STRING,
+    last_name: DataTypes.STRING,
+    password: DataTypes.STRING,
+    age: DataTypes.INTEGER,
+    skill_level: DataTypes.INTEGER,
+    instrument: DataTypes.STRING,
+    genre: DataTypes.STRING
+  });
+  return User;
 };
-
-// Export the database functions for the controller (usersController.js).
-module.exports = user;
