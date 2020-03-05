@@ -62,18 +62,18 @@ module.exports = function(app) {
   });
 
   // POST route for saving a new user
-  app.post("/api/posts", function(req, res) {
+  app.post("/api/users", function(req, res) {
     console.log(req.body);
-    db.Post.create({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
+    db.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
       age: req.body.age,
-      skill_level: req.body.skill_level,
+      skillLevel: req.body.skillLevel,
       instrument: req.body.instrument,
       genre: req.body.genre
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbUser) {
+        res.json(dbUser);
       });
   });
 
