@@ -39,17 +39,6 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for returning users of a specific category
-  app.get("/api/users/category/:category", function(req, res) {
-    db.User.findAll({
-      where: {
-        category: req.params.category
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
-
   // Get route for retrieving a single user
   app.get("/api/users/:id", function(req, res) {
     db.User.findOne({
@@ -60,6 +49,37 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
+
+  app.get("/api/users/:id", function(req, res) {
+    db.User.findOne({
+      where: {
+        instrument: req.params.instrument
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.get("/api/users/:id", function(req, res) {
+    db.User.findOne({
+      where: {
+        genre: req.params.genre
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+
+  app.get("/api/users/:id", function(req, res) {
+    db.User.findOne({
+      where: {
+        skillLevel: req.params.skillLevel
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
+  });
+  
 
   // POST route for saving a new user
   app.post("/api/users", function(req, res) {
