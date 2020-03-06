@@ -53,7 +53,7 @@ module.exports = function(app) {
   app.get("/api/users/:id", function(req, res) {
     db.User.findAll({
       where: {
-        instrument: req.params.instrument
+        instruments: req.params.instrument
       }
     }).then(function(dbUser) {
       res.json(dbUser);
@@ -63,7 +63,7 @@ module.exports = function(app) {
   app.get("/api/users/:id", function(req, res) {
     db.User.findAll({
       where: {
-        genre: req.params.genre
+        genres: req.params.genre
       }
     }).then(function(dbUser) {
       res.json(dbUser);
@@ -89,8 +89,9 @@ module.exports = function(app) {
       lastName: req.body.lastName,
       age: req.body.age,
       skillLevel: req.body.skillLevel,
-      instrument: req.body.instrument,
-      genre: req.body.genre
+      instruments: req.body.instrument,
+      genres: req.body.genre,
+      connections: req.body.connections
     })
       .then(function(dbUser) {
         res.json(dbUser);
@@ -108,7 +109,7 @@ module.exports = function(app) {
     });
   });
 
-  // PUT route for updating users
+  // PUT route for updating users information
   app.put("/api/users", function(req, res) {
     db.User.update(req.body, {
       where: {

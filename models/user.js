@@ -9,8 +9,8 @@ module.exports = function(sequelize, DataTypes) {
       lastName: DataTypes.STRING,
       age: DataTypes.INTEGER,
       skillLevel: DataTypes.INTEGER,
-      instrument: DataTypes.STRING,
-      genre: DataTypes.STRING,
+      instruments: DataTypes.STRING,
+      genres: DataTypes.STRING,
       //a collumn to store what users the current user is connected to based on user.id
       connections: {
         type: DataTypes.STRING,
