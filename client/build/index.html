@@ -1,0 +1,49 @@
+Html Webpack Plugin:
+<pre>
+  Error: Parse Error: <link href="//code.ionicframework.com/ionicons/2.0.1/cs  s/ionicons.min.css" rel="stylesheet" type="text/css"
+      <!--
+        manifest.json provides metadata used when your web app is installed o  n a
+        user's mobile device or desktop. See https://developers.google.com/we  b/fundamentals/web-app-manifest/
+      -->
+      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      <!--
+        Notice the use of %PUBLIC_URL% in the tags above.
+        It will be replaced with the URL of the `public` folder during the bu  ild.
+        Only files inside the `public` folder can be referenced from the HTML  .
+        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" wi  ll
+        work correctly both with client-side routing and a non-root public UR  L.
+        Learn how to configure a non-root public URL by running `npm run buil  d`.
+      -->
+      <title>React App</title>
+    </head>
+    <body>
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+      <div id="root"></div>
+      <!--
+        This HTML file is a template.
+        If you open it directly in the browser, you will see an empty page.
+        You can add webfonts, meta tags, or analytics to this file.
+        The build step will place the bundled scripts into the <body> tag.
+        To begin the development, run `npm start` or `yarn start`.
+        To create a production bundle, use `npm run build` or `yarn build`.
+      -->
+    <script>!function(e){function r(r){for(var n,l,i=r[0],f=r[1],a=r[2],p=0,s  =[];p<i.length;p++)l=i[p],Object.prototype.hasOwnProperty.call(o,l)&&o[l]&&  s.push(o[l][0]),o[l]=0;for(n in f)Object.prototype.hasOwnProperty.call(f,n)  &&(e[n]=f[n]);for(c&&c(r);s.length;)s.shift()();return u.push.apply(u,a||[]  ),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,i=1;i<  t.length;i++){var f=t[i];0!==o[f]&&(n=!1)}n&&(u.splice(r--,1),e=l(l.s=t[0])  )}return e}var n={},o={1:0},u=[];function l(r){if(n[r])return n[r].exports;  var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,l),  t.l=!0,t.exports}l.m=e,l.c=n,l.d=function(e,r,t){l.o(e,r)||Object.definePro  perty(e,r,{enumerable:!0,get:t})},l.r=function(e){"undefined"!==typeof Symb  ol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"  Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(e,  r){if(1&r&&(e=l(e)),8&r)return e;if(4&r&&"object"===typeof e&&e&&e.__esModu  le)return e;var t=Object.create(null);if(l.r(t),Object.defineProperty(t,"de  fault",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)l.d(  t,n,function(r){return e[r]}.bind(null,n));return t},l.n=function(e){var r=  e&&e.__esModule?function(){return e.default}:function(){return e};return l.  d(r,"a",r),r},l.o=function(e,r){return Object.prototype.hasOwnProperty.call  (e,r)},l.p="/";var i=this.webpackJsonpmedium_clone=this.webpackJsonpmedium_  clone||[],f=i.push.bind(i);i.push=r,i=i.slice();for(var a=0;a<i.length;a++)  r(i[a]);var c=f;t()}([]);
+  //# sourceMappingURL=runtime-main.e3be3c22.js.map</script><script src="/sta  tic/js/2.db9a8eea.chunk.js"></script><script src="/static/js/main.ee325e45.  chunk.js"></script></body>
+  </html>
+  
+  - htmlparser.js:240 new HTMLParser
+    [react-clef]/[html-minifier]/src/htmlparser.js:240:13
+  
+  - htmlminifier.js:966 minify
+    [react-clef]/[html-minifier]/src/htmlminifier.js:966:3
+  
+  - htmlminifier.js:1326 Object.exports.minify
+    [react-clef]/[html-minifier]/src/htmlminifier.js:1326:16
+  
+  - index.js:437 HtmlWebpackPlugin.postProcessHtml
+    [react-clef]/[html-webpack-plugin]/index.js:437:34
+  
+  - index.js:270 
+    [react-clef]/[html-webpack-plugin]/index.js:270:25
+  
+</pre>
