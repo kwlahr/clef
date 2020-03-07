@@ -50,36 +50,45 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
+  app.get("/api/users/:id/instruments", function(req, res) {
     db.User.findAll({
       where: {
-        instrument: req.params.instrument
+        id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.json(dbUser[0].instruments);
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
+  app.get("/api/users/:id/genres", function(req, res) {
     db.User.findAll({
       where: {
-        genre: req.params.genre
+        id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.json(dbUser[0].genres);
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
+  app.get("/api/users/:id/skillLevel", function(req, res) {
     db.User.findAll({
       where: {
-        skillLevel: req.params.skillLevel
+        id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.json(dbUser[0].skillLevel);
     });
   });
-  
+
+  app.get("/api/users/:id/connections", function(req, res) {
+    db.User.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser[0].connections);
+    });
+  });
 
   // POST route for saving a new user
   app.post("/api/users", function(req, res) {
@@ -89,12 +98,12 @@ module.exports = function(app) {
       lastName: req.body.lastName,
       age: req.body.age,
       skillLevel: req.body.skillLevel,
-      instrument: req.body.instrument,
-      genre: req.body.genre
-    })
-      .then(function(dbUser) {
-        res.json(dbUser);
-      });
+      instruments: req.body.instrument,
+      genres: req.body.genre,
+      connections: req.body.connections
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 
   // DELETE route for deleting users
@@ -108,7 +117,7 @@ module.exports = function(app) {
     });
   });
 
-  // PUT route for updating users
+  // PUT route for updating users information
   app.put("/api/users", function(req, res) {
     db.User.update(req.body, {
       where: {
