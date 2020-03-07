@@ -50,36 +50,45 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
+  app.get("/api/users/:id/instruments", function(req, res) {
     db.User.findAll({
       where: {
-        instruments: req.params.instrument
+        id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.json(dbUser[0].instruments);
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
+  app.get("/api/users/:id/genres", function(req, res) {
     db.User.findAll({
       where: {
-        genres: req.params.genre
+        id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.json(dbUser[0].genres);
     });
   });
 
-  app.get("/api/users/:id", function(req, res) {
+  app.get("/api/users/:id/skillLevel", function(req, res) {
     db.User.findAll({
       where: {
-        skillLevel: req.params.skillLevel
+        id: req.params.id
       }
     }).then(function(dbUser) {
-      res.json(dbUser);
+      res.json(dbUser[0].skillLevel);
     });
   });
-  
+
+  app.get("/api/users/:id/connections", function(req, res) {
+    db.User.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser[0].connections);
+    });
+  });
 
   // POST route for saving a new user
   app.post("/api/users", function(req, res) {
@@ -92,10 +101,9 @@ module.exports = function(app) {
       instruments: req.body.instrument,
       genres: req.body.genre,
       connections: req.body.connections
-    })
-      .then(function(dbUser) {
-        res.json(dbUser);
-      });
+    }).then(function(dbUser) {
+      res.json(dbUser);
+    });
   });
 
   // DELETE route for deleting users
