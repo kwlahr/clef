@@ -1,11 +1,16 @@
 // Requiring our models and passport as we've configured it
 var db = require("../../models");
 var passport = require("../../config/passport");
+const path = require("path");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
+  app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, "../../client/public/index.html"));
+  });
+
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     res.json(req.user);
   });
@@ -92,16 +97,19 @@ module.exports = function(app) {
 
   // POST route for saving a new user
   app.post("/api/users", function(req, res) {
-    console.log(req.body);
-    db.User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      age: req.body.age,
-      skillLevel: req.body.skillLevel,
-      instruments: req.body.instrument,
-      genres: req.body.genre,
-      connections: req.body.connections
-    }).then(function(dbUser) {
+    console.log('req body', req.body);
+    db.User.create(
+      // {
+      // firstName: req.body.firstName,
+      // lastName: req.body.lastName,
+      // age: req.body.age,
+      // skillLevel: req.body.skillLevel,
+      // instruments: req.body.instrument,
+      // genres: req.body.genre,
+      // connections: req.body.connections
+      // email: req.body.email
+    // } 
+    req.body).then(function(dbUser) {
       res.json(dbUser);
     });
   });
