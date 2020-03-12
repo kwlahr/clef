@@ -45,50 +45,50 @@ module.exports = function(app) {
   });
 
   // Get route for retrieving a single user
-  app.get("/api/users/:id", function(req, res) {
+  app.get("/api/users/:userID", function(req, res) {
     db.User.findOne({
       where: {
-        id: req.params.id
+        userID: req.params.userID
       }
     }).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
-  app.get("/api/users/:id/instruments", function(req, res) {
+  app.get("/api/users/:userID/instruments", function(req, res) {
     db.User.findAll({
       where: {
-        id: req.params.id
+        userID: req.params.userID
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].instruments);
     });
   });
 
-  app.get("/api/users/:id/genres", function(req, res) {
+  app.get("/api/users/:userID/genres", function(req, res) {
     db.User.findAll({
       where: {
-        id: req.params.id
+        userID: req.params.userID
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].genres);
     });
   });
 
-  app.get("/api/users/:id/skillLevel", function(req, res) {
+  app.get("/api/users/:userID/skillLevel", function(req, res) {
     db.User.findAll({
       where: {
-        id: req.params.id
+        userID: req.params.userID
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].skillLevel);
     });
   });
 
-  app.get("/api/users/:id/connections", function(req, res) {
+  app.get("/api/users/:userID/connections", function(req, res) {
     db.User.findAll({
       where: {
-        id: req.params.id
+        userID: req.params.userID
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].connections);
@@ -97,7 +97,7 @@ module.exports = function(app) {
 
   // POST route for saving a new user
   app.post("/api/users", function(req, res) {
-    console.log('req body', req.body);
+    console.log("req body", req.body);
     db.User.create(
       // {
       // firstName: req.body.firstName,
@@ -108,8 +108,9 @@ module.exports = function(app) {
       // genres: req.body.genre,
       // connections: req.body.connections
       // email: req.body.email
-    // } 
-    req.body).then(function(dbUser) {
+      // }
+      req.body
+    ).then(function(dbUser) {
       res.json(dbUser);
     });
   });
@@ -135,4 +136,39 @@ module.exports = function(app) {
       res.json(dbUser);
     });
   });
+
+  app.get("/api/posts/", function(req, res) {
+    db.Post.findAll({}).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  app.get("/api/posts/:postID", function(req, res) {
+    db.Post.findOne({
+      where: {
+        postID: req.params.postID
+      }
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  app.get("/api/users/posts/:postID/", function(req, res) {
+    db.Post.findOne({
+      where: {
+        postID: req.params.postID
+      },
+      include: [db.User]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+  app.post("/api/posts/", function(req, res) {
+    db.Post.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+
 };

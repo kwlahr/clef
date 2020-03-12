@@ -5,13 +5,17 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define(
     "User",
     {
+      userID: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+      },
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       age: DataTypes.INTEGER,
       skillLevel: DataTypes.INTEGER,
       instruments: DataTypes.STRING,
       genres: DataTypes.STRING,
-      //a collumn to store what users the current user is connected to based on user.id
       connections: {
         type: DataTypes.STRING,
         allowNull: true
@@ -35,6 +39,12 @@ module.exports = function(sequelize, DataTypes) {
       timestamps: false
     }
   );
+
+  User.associate = (models) => {
+      User.hasMany(models.Post, {
+        onDelete: 'cascade'
+      });
+  };
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);

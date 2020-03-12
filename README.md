@@ -1,11 +1,11 @@
-## Clef
+# Clef
 
 
-# Description
+## Description
 A social networking app to help musicians connect with other musicians near them.
 
 
-# Usage
+## Usage
 
 * Select the `server.js` file in the root directory and open that in your terminal.
 * Run `npm install`.
