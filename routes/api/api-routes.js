@@ -55,6 +55,7 @@ module.exports = function(app) {
     });
   });
 
+//get all instruments a user plays
   app.get("/api/users/:userID/instruments", function(req, res) {
     db.User.findAll({
       where: {
@@ -65,6 +66,7 @@ module.exports = function(app) {
     });
   });
 
+//get all genres a user plays
   app.get("/api/users/:userID/genres", function(req, res) {
     db.User.findAll({
       where: {
@@ -75,6 +77,7 @@ module.exports = function(app) {
     });
   });
 
+//get a user's skill level
   app.get("/api/users/:userID/skillLevel", function(req, res) {
     db.User.findAll({
       where: {
@@ -85,6 +88,7 @@ module.exports = function(app) {
     });
   });
 
+//get a user's connections list
   app.get("/api/users/:userID/connections", function(req, res) {
     db.User.findAll({
       where: {
@@ -99,16 +103,6 @@ module.exports = function(app) {
   app.post("/api/users", function(req, res) {
     console.log("req body", req.body);
     db.User.create(
-      // {
-      // firstName: req.body.firstName,
-      // lastName: req.body.lastName,
-      // age: req.body.age,
-      // skillLevel: req.body.skillLevel,
-      // instruments: req.body.instrument,
-      // genres: req.body.genre,
-      // connections: req.body.connections
-      // email: req.body.email
-      // }
       req.body
     ).then(function(dbUser) {
       res.json(dbUser);
@@ -116,10 +110,11 @@ module.exports = function(app) {
   });
 
   // DELETE route for deleting users
-  app.delete("/api/users/:id", function(req, res) {
+  //deleting a user will also delete all of their posts due to cascading delete defined in the User model
+  app.delete("/api/users/:userID", function(req, res) {
     db.User.destroy({
       where: {
-        id: req.params.id
+        userID: req.params.userID
       }
     }).then(function(dbUser) {
       res.json(dbUser);
@@ -127,22 +122,24 @@ module.exports = function(app) {
   });
 
   // PUT route for updating users information
-  app.put("/api/users", function(req, res) {
+  app.put("/api/users/:userID", function(req, res) {
     db.User.update(req.body, {
       where: {
-        id: req.body.id
+        userID: req.body.userID
       }
     }).then(function(dbUser) {
       res.json(dbUser);
     });
   });
 
+//get all posts for global feed
   app.get("/api/posts/", function(req, res) {
     db.Post.findAll({}).then(function(dbPost) {
       res.json(dbPost);
     });
   });
 
+//get a single post
   app.get("/api/posts/:postID", function(req, res) {
     db.Post.findOne({
       where: {
@@ -153,10 +150,11 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/users/posts/:postID/", function(req, res) {
-    db.Post.findOne({
+//get all posts from a single user
+  app.get("/api/users/:UserUserID/posts/", function(req, res) {
+    db.Post.findAll({
       where: {
-        postID: req.params.postID
+        UserUserID: req.params.UserUserID
       },
       include: [db.User]
     }).then(function(dbPost) {
@@ -164,8 +162,16 @@ module.exports = function(app) {
     });
   });
 
+//post a post
   app.post("/api/posts/", function(req, res) {
     db.Post.create(req.body).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
+
+//update a post
+  app.put("/api/posts/", function(req, res) {
+    db.Post.update(req.body).then(function(dbPost) {
       res.json(dbPost);
     });
   });
