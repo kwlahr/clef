@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define(
     "User",
     {
-      userID: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -41,7 +41,7 @@ module.exports = function(sequelize, DataTypes) {
   );
 
   User.associate = (models) => {
-      User.hasMany(models.Post, {
+      User.hasMany(models.Article, {
         onDelete: 'cascade'
       });
   };
