@@ -8,4 +8,4 @@ INSERT INTO users (firstName, lastName, age, skillLevel, instruments, genres, co
 INSERT INTO users (firstName, lastName, age, skillLevel, instruments, genres, connections, email, password) VALUES ('buddy', 'holly', 19, 4, 'guitar', 'rock', 'the crickets', 'buddy@gmail.com', 'losingaltitude');
 
 USE users_db;
-INSERT INTO articles (title, description, body, tagList, UserId) VALUES ('My first post!', 'Posting', 'Here is the body', 'some tags', 1);
+INSERT INTO posts (title, subject, body, tags, UserUserID) VALUES ('My first post!', 'Posting', 'Here is the body', 'some tags', 1);
