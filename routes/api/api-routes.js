@@ -44,16 +44,16 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for retrieving a single user
-  app.get("/api/users/:id", function(req, res) {
-    db.User.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
+//   // Get route for retrieving a single user
+//   app.get("/api/users/:id", function(req, res) {
+//     db.User.findOne({
+//       where: {
+//         id: req.params.id
+//       }
+//     }).then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
 // //get all instruments a user plays
 //   app.get("/api/users/:id/instruments", function(req, res) {
@@ -99,38 +99,38 @@ module.exports = function(app) {
 //     });
 //   });
 
-  // POST route for saving a new user
-  app.post("/api/users", function(req, res) {
-    console.log("req body", req.body);
-    db.User.create(
-      req.body
-    ).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
+//   // POST route for saving a new user
+//   app.post("/api/users", function(req, res) {
+//     console.log("req body", req.body);
+//     db.User.create(
+//       req.body
+//     ).then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
-  // DELETE route for deleting users
-  //deleting a user will also delete all of their posts due to cascading delete defined in the User model
-  app.delete("/api/users/:id", function(req, res) {
-    db.User.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
+//   // DELETE route for deleting users
+//   //deleting a user will also delete all of their posts due to cascading delete defined in the User model
+//   app.delete("/api/users/:id", function(req, res) {
+//     db.User.destroy({
+//       where: {
+//         id: req.params.id
+//       }
+//     }).then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
-  // PUT route for updating users information
-  app.put("/api/users/:id", function(req, res) {
-    db.User.update(req.body, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser);
-    });
-  });
+//   // PUT route for updating users information
+//   app.put("/api/users/:id", function(req, res) {
+//     db.User.update(req.body, {
+//       where: {
+//         id: req.body.id
+//       }
+//     }).then(function(dbUser) {
+//       res.json(dbUser);
+//     });
+//   });
 
 //get all posts for global feed
   app.get("/api/articles/", function(req, res) {
@@ -140,7 +140,7 @@ module.exports = function(app) {
   });
 
 //get a single post
-  app.get("/api/article/:slug", function(req, res) {
+  app.get("/api/articles/:slug", function(req, res) {
     db.Article.findOne({
       where: {
         slug: req.params.slug
@@ -162,14 +162,14 @@ module.exports = function(app) {
     });
   });
 
-//post a post
+//post an article
   app.post("/api/articles/", function(req, res) {
     db.Article.create(req.body).then(function(dbArticle) {
       res.json(dbArticle);
     });
   });
 
-//update a post
+//update an article
   app.put("/api/articles/", function(req, res) {
     db.Article.update(req.body).then(function(dbArticle) {
       res.json(dbArticle);
