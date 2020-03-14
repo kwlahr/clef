@@ -133,46 +133,46 @@ module.exports = function(app) {
   });
 
 //get all posts for global feed
-  app.get("/api/posts/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPost) {
-      res.json(dbPost);
+  app.get("/api/articles/", function(req, res) {
+    db.Article.findAll({}).then(function(dbArticle) {
+      res.json(dbArticle);
     });
   });
 
 //get a single post
-  app.get("/api/posts/:postID", function(req, res) {
-    db.Post.findOne({
+  app.get("/api/article/:id", function(req, res) {
+    db.Article.findOne({
       where: {
-        postID: req.params.postID
+        id: req.params.id
       }
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    }).then(function(dbArticle) {
+      res.json(dbArticle);
     });
   });
 
 //get all posts from a single user
-  app.get("/api/users/:UserUserID/posts/", function(req, res) {
-    db.Post.findAll({
+  app.get("/api/users/:UserId/articles/", function(req, res) {
+    db.Article.findAll({
       where: {
-        UserUserID: req.params.UserUserID
+        UserId: req.params.UserId
       },
       include: [db.User]
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    }).then(function(dbArticle) {
+      res.json(dbArticle);
     });
   });
 
 //post a post
-  app.post("/api/posts/", function(req, res) {
-    db.Post.create(req.body).then(function(dbPost) {
-      res.json(dbPost);
+  app.post("/api/articles/", function(req, res) {
+    db.Article.create(req.body).then(function(dbArticle) {
+      res.json(dbArticle);
     });
   });
 
 //update a post
-  app.put("/api/posts/", function(req, res) {
-    db.Post.update(req.body).then(function(dbPost) {
-      res.json(dbPost);
+  app.put("/api/article/", function(req, res) {
+    db.Article.update(req.body).then(function(dbArticle) {
+      res.json(dbArticle);
     });
   });
 
