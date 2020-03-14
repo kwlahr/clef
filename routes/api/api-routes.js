@@ -55,49 +55,49 @@ module.exports = function(app) {
     });
   });
 
-//get all instruments a user plays
-  app.get("/api/users/:id/instruments", function(req, res) {
-    db.User.findAll({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser[0].instruments);
-    });
-  });
+// //get all instruments a user plays
+//   app.get("/api/users/:id/instruments", function(req, res) {
+//     db.User.findAll({
+//       where: {
+//         id: req.params.id
+//       }
+//     }).then(function(dbUser) {
+//       res.json(dbUser[0].instruments);
+//     });
+//   });
 
-//get all genres a user plays
-  app.get("/api/users/:id/genres", function(req, res) {
-    db.User.findAll({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser[0].genres);
-    });
-  });
+// //get all genres a user plays
+//   app.get("/api/users/:id/genres", function(req, res) {
+//     db.User.findAll({
+//       where: {
+//         id: req.params.id
+//       }
+//     }).then(function(dbUser) {
+//       res.json(dbUser[0].genres);
+//     });
+//   });
 
-//get a user's skill level
-  app.get("/api/users/:id/skillLevel", function(req, res) {
-    db.User.findAll({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser[0].skillLevel);
-    });
-  });
+// //get a user's skill level
+//   app.get("/api/users/:id/skillLevel", function(req, res) {
+//     db.User.findAll({
+//       where: {
+//         id: req.params.id
+//       }
+//     }).then(function(dbUser) {
+//       res.json(dbUser[0].skillLevel);
+//     });
+//   });
 
-//get a user's connections list
-  app.get("/api/users/:id/connections", function(req, res) {
-    db.User.findAll({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbUser) {
-      res.json(dbUser[0].connections);
-    });
-  });
+// //get a user's connections list
+//   app.get("/api/users/:id/connections", function(req, res) {
+//     db.User.findAll({
+//       where: {
+//         id: req.params.id
+//       }
+//     }).then(function(dbUser) {
+//       res.json(dbUser[0].connections);
+//     });
+//   });
 
   // POST route for saving a new user
   app.post("/api/users", function(req, res) {
