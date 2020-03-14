@@ -140,10 +140,10 @@ module.exports = function(app) {
   });
 
 //get a single post
-  app.get("/api/article/:id", function(req, res) {
+  app.get("/api/article/:slug", function(req, res) {
     db.Article.findOne({
       where: {
-        id: req.params.id
+        slug: req.params.slug
       }
     }).then(function(dbArticle) {
       res.json(dbArticle);
