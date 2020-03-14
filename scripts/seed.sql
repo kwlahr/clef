@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS users_db;
+CREATE DATABASE users_db;
 USE users_db;
 INSERT INTO users (firstName, lastName, age, skillLevel, instruments, genres, connections, email, password) VALUES ('robert', 'paulson', 32, 1, 'guitar', 'blues', 'tyler durden', 'rob@gmail.com', 'hisnamewasmynametoo');
 INSERT INTO users (firstName, lastName, age, skillLevel, instruments, genres, connections, email, password) VALUES ('elvis', 'presley', 25, 5, 'guitar', 'blues', 'johnny cash', 'theking@gmail.com', 'givemedonuts');
@@ -5,3 +7,5 @@ INSERT INTO users (firstName, lastName, age, skillLevel, instruments, genres, co
 INSERT INTO users (firstName, lastName, age, skillLevel, instruments, genres, connections, email, password) VALUES ('miranda', 'lipes', 32, 4, 'trumpet', 'jazz', 'kyle lahr', 'mirandasimonnelipes@gmail.com', 'simonneaugust');
 INSERT INTO users (firstName, lastName, age, skillLevel, instruments, genres, connections, email, password) VALUES ('buddy', 'holly', 19, 4, 'guitar', 'rock', 'the crickets', 'buddy@gmail.com', 'losingaltitude');
 
+USE users_db;
+INSERT INTO posts (title, subject, body, tags, UserUserID) VALUES ('My first post!', 'Posting', 'Here is the body', 'some tags', 1);
