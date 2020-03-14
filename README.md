@@ -1,4 +1,3 @@
-
 # Clef
 
 
@@ -18,4 +17,3 @@ A social networking app to help musicians connect with other musicians near them
 * Run `npm install`.
 * Run `node server.js`.
 * In `scripts/seed.sql` copy and paste the code into MySQL workbench.
-
