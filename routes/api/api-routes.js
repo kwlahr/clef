@@ -45,10 +45,10 @@ module.exports = function(app) {
   });
 
   // Get route for retrieving a single user
-  app.get("/api/users/:userID", function(req, res) {
+  app.get("/api/users/:id", function(req, res) {
     db.User.findOne({
       where: {
-        userID: req.params.userID
+        id: req.params.id
       }
     }).then(function(dbUser) {
       res.json(dbUser);
@@ -56,10 +56,10 @@ module.exports = function(app) {
   });
 
 //get all instruments a user plays
-  app.get("/api/users/:userID/instruments", function(req, res) {
+  app.get("/api/users/:id/instruments", function(req, res) {
     db.User.findAll({
       where: {
-        userID: req.params.userID
+        id: req.params.id
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].instruments);
@@ -67,10 +67,10 @@ module.exports = function(app) {
   });
 
 //get all genres a user plays
-  app.get("/api/users/:userID/genres", function(req, res) {
+  app.get("/api/users/:id/genres", function(req, res) {
     db.User.findAll({
       where: {
-        userID: req.params.userID
+        id: req.params.id
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].genres);
@@ -78,10 +78,10 @@ module.exports = function(app) {
   });
 
 //get a user's skill level
-  app.get("/api/users/:userID/skillLevel", function(req, res) {
+  app.get("/api/users/:id/skillLevel", function(req, res) {
     db.User.findAll({
       where: {
-        userID: req.params.userID
+        id: req.params.id
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].skillLevel);
@@ -89,10 +89,10 @@ module.exports = function(app) {
   });
 
 //get a user's connections list
-  app.get("/api/users/:userID/connections", function(req, res) {
+  app.get("/api/users/:id/connections", function(req, res) {
     db.User.findAll({
       where: {
-        userID: req.params.userID
+        id: req.params.id
       }
     }).then(function(dbUser) {
       res.json(dbUser[0].connections);
@@ -111,10 +111,10 @@ module.exports = function(app) {
 
   // DELETE route for deleting users
   //deleting a user will also delete all of their posts due to cascading delete defined in the User model
-  app.delete("/api/users/:userID", function(req, res) {
+  app.delete("/api/users/:id", function(req, res) {
     db.User.destroy({
       where: {
-        userID: req.params.userID
+        id: req.params.id
       }
     }).then(function(dbUser) {
       res.json(dbUser);
@@ -122,10 +122,10 @@ module.exports = function(app) {
   });
 
   // PUT route for updating users information
-  app.put("/api/users/:userID", function(req, res) {
+  app.put("/api/users/:id", function(req, res) {
     db.User.update(req.body, {
       where: {
-        userID: req.body.userID
+        id: req.body.id
       }
     }).then(function(dbUser) {
       res.json(dbUser);
@@ -170,7 +170,7 @@ module.exports = function(app) {
   });
 
 //update a post
-  app.put("/api/article/", function(req, res) {
+  app.put("/api/articles/", function(req, res) {
     db.Article.update(req.body).then(function(dbArticle) {
       res.json(dbArticle);
     });
